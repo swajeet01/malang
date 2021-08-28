@@ -79,11 +79,13 @@
 
 /**
  * Define a function
+ * WARNING: Must be followed by FNBEG
  */
 #define FNDEF(type, name) type name 
 
 /**
  * Begin function body
+ * WARNING: Must be preceded by FNDEF(type, name)
  */
 #define FNBEG {
 
