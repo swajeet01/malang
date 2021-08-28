@@ -3,7 +3,7 @@ A (not really) high level programming language, based on C Pre Processor Macro
 Expainsion.
 
 # Getting Started
-There are many ways in which you can use MALang.
+There are couple of ways in which you can use MALang.
 
 ## Installtion
 
@@ -17,7 +17,7 @@ _No windows installation, if someone could write a windows port of the scripts
 you are welcome to do so._
 
 ## Without Installtion
-You don't need to install the scripts to use MALang, just get the MALang.h file
+You don't need to install the scripts to use MALang, just get the `MALang.h` file
 and a C compiler.
 
 # Writing First MALang program
@@ -69,7 +69,7 @@ be testing MALang and writing install scripts or something equivalent
 for Windows soon, till then let's see what we can do._
 
 - A Windows user can get the `MALang.h` file and create a ordinary C file
-names `main.c` and include the `MALang.h` file and start
+named `main.c` and include the `MALang.h` file and start
 using MALang.
 
 ### Editor Setup (Windows)
@@ -91,7 +91,8 @@ END
 ```
 - or if you have put the `MALang.h` file somewhere else you can either write
 the full path inside the double quotes or later specify the directory your
-compiler will search it for, in the later case you have to put `MALang.h` inside angle brackets in the `include` directive.
+compiler will search it for, in the later case you have to put `MALang.h`
+inside angle brackets in the `include` directive.
 - Compile your program with any C compiler, in my case I'll use gcc-
 ```shell
 $ gcc main.c -o main
@@ -103,4 +104,34 @@ $ main.exe
 ```
 - It will produce the same output as above.
 
-# UNCOMPLETED!
+## Two Ways
+**MALang is really just few macro definitions, in reality you are writing
+C code and MALang code can be used in any C file and can be compiled with
+any C compiler**, It can be used basically in two ways
+1. With `mln` script
+    
+    The sources includes shell scripts that can be used to place the `MLang.h`
+    file and `mln` script in the correct places and then one can use MALang
+    with simple include directive and a simple command, unfortunately
+    they are not portable right now and will not work for Windows.
+    `mln` script works with `.mln` files and converts them to c source files
+    which can then be compiled by any C compiler.
+    If you have any other compiler than `gcc` you can set the environment
+    variable `CCOMP` to its path or command name and that will be used to
+    compile the C files
+
+2. As stated MALang code is just C code, you can just include the `MALang.h`
+    header in any C file and use it, compiling with any C compiler.
+
+## Documentation
+_Working on it_
+
+## Where to use MALang
+Nowhere really, MALang isn't really a programming language, it's just few
+macro definitions. MALang can be used to write toy programs or new learners
+to get a overview of programming languages.
+
+
+## Warning
+MALang is in experimental stage, as well as this document. More content
+will be added in future
