@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 // Include Guard
 #ifndef MLANG_H
 #define MLANG_H 1
