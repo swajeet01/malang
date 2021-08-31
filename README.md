@@ -46,7 +46,7 @@ END
 ```
 ### Compile Your Program
 _YES! I have installed the `mln` script._
-- If you have installed te MLang compiler script `mln` then just run the command.
+- If you have installed the MLang compiler script `mln` then just run the command.
 ```shell
 $ mln main.mln -o main
 ```
@@ -128,8 +128,8 @@ _Working on it_
 
 ## Where to use MALang
 Nowhere really, MALang isn't really a programming language, it's just few
-macro definitions. MALang can be used to write toy programs or new learners
-to get a overview of programming languages.
+macro definitions. MALang can be used to write toy programs or by new learners
+to get an overview of programming languages.
 
 
 ## Warning
