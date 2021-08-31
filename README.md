@@ -128,7 +128,7 @@ any C compiler**, It can be used basically in two ways
     header in any C file and use it, compiling with any C compiler.
 
 ## Documentation
-_Working on it_
+Read the [MALang Basics](docs/basics.md)
 
 ## Where to use MALang
 Nowhere really, MALang isn't really a programming language, it's just few

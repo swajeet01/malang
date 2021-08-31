@@ -54,11 +54,12 @@
 
 /**
  * Do part of Do-While loop
+ * WARNING: Marco Pitlfall
  */
 #define DO(body) do { body }
 
 /**
- * WHile part of Do-While loop
+ * While part of Do-While loop
  */
 #define WHL(cond) while (cond);
 
