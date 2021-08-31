@@ -12,6 +12,8 @@ There are couple of ways in which you can use MALang.
 2. Run `install.sh` as `root`.
 3. Done.
 
+_Install script just places the `MALang.h` file in `/usr/local/include` and places the `mln.sh` script in `/usr/local/bin`_
+
 ### Windows
 _No windows installation, if someone could write a windows port of the scripts
 you are welcome to do so._
@@ -41,7 +43,8 @@ auto-completion.)
 #include <MALang.h>
 
 BEGIN
-    println("Hello World!")
+    println ("Hello World!")
+    send (0)
 END
 ```
 ### Compile Your Program
@@ -86,7 +89,8 @@ paste or write the following code
 #include "MALang.h"
 
 BEGIN
-    println("Hello World!")
+    println ("Hello World!")
+    send (0)
 END
 ```
 - or if you have put the `MALang.h` file somewhere else you can either write
