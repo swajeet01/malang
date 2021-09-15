@@ -81,4 +81,10 @@
  */
 #define read_double(var) scanf("%c", &var);
 
+/**
+ * Read formatted input to stdout
+ * WARNING: Requires & operator
+ */
+#define formatr(args...) scanf(args);
+
 #endif /* MALANG_HLIO_H Include Gurad */

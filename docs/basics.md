@@ -21,8 +21,8 @@ The Next line provides entry point to
 our program, you know that every C program start from the `main` function.
 In MALang the program starts from `BEGIN` keyword.
 
-The `BEGIN` keyword start a block. Every block must be closed with the `END`
-keyword, In this case its also the end of the program.
+The `BEGIN` keyword starts a block. Every block must be closed with the `END`
+keyword, In this case it's also the end of the program.
 
 `println` is an _action_, which is a macro definition in `MALang.h`, it prints
 a string followed by a newline character.
@@ -109,7 +109,7 @@ BEGIN
         println("Is it?")
     ELSE
         decl (int, chaos_lvl) init (10)
-        format("chaos level %d\n", chaos_lvl)
+        formatp("chaos level %d\n", chaos_lvl)
     END
 
 END
@@ -158,7 +158,7 @@ BEGIN
 
     REPEATN (3, i)
         REPEATN (3, j)
-            format ("row: %d column: %d\n", i, j)
+            formatp ("row: %d column: %d\n", i, j)
         END
     END
 
@@ -184,22 +184,34 @@ And so is `DO-WHILE`.
 
 BEGIN
 
-    DO (
+    DO
         println ("hello")
-    ) WHL (1 > 10)
+    WHL (1 > 10)
 
 END
 ```
-**Be careful here**, if the `DO` body has any comma, it will cause a Macro Pitfall, alternative `DO-WHILE` will be added soon.
 
-At last the `FOR` loop. DO NOT USE THIS. better alternative is on the way.
+The `FOR` loop.
 ```C
 #include <MALang.h>
 
 BEGIN
 
-    FOR (int i = 0, i < 2, ++i)
-        format ("10 * %d = %d\n", i, 10 * i)
+    FOR (int i = 0; i < 2; ++i) FORBEG
+        formatp ("10 * %d = %d\n", i, 10 * i)
+    END
+
+END
+```
+
+The `FOR_D` loop. DO NOT USE THIS.
+```C
+#include <MALang.h>
+
+BEGIN
+
+    FOR_D (int i = 0, i < 2, ++i)
+        formatp ("10 * %d = %d\n", i, 10 * i)
     END
 
 END
@@ -215,28 +227,30 @@ There are two ways in which you can define functions
     #include <MALang.h>
 
     FN (int, foo, (int p1, float p2),
-        format ("\n%d %f\n", p1, p2)
+        formatp ("\n%d %f\n", p1, p2)
         send (0)
     )
 
     BEGIN
+        send (0)
     END
     ```
     The `FN` keyword is used to define functions the parameters are in order-
     return type, function name, parameter list warpped in `()`, function body.
     
     This method is useful for defining short functions, **Be careful** if
-    there are any commas in the function body it will cause a Macro Pitfall.
+    there are any unparenthesized commas in the function body it will cause a Macro Pitfall.
     ```C
     #include <MALang.h>
 
     FN (int, foo, (int p1, float p2),
-        format ("%d %f", p1, p2)
+        formatp ("%d %f", p1, p2)
         int i = 0, j = 10 end // error
         send (0)
     )
 
     BEGIN
+        send (0)
     END
     ```
 - Normal definition
@@ -247,19 +261,20 @@ There are two ways in which you can define functions
     ```C
     #include <MALang.h>
 
-    FNDEF (int, bar) (int p1, float p2) FNBEG
-        format ("%d %f", p1, p2)
+    FNDEF (int, bar) FNBEG (int p1, float p2)
+        formatp ("%d %f", p1, p2)
         int i = 0, j = 1 end // okay
         send (0)
     END
 
     BEGIN
+        send (0)
     END
     ```
     This definition starts with `FNDEF` keyword instead of `FN` keyword,
     it takes two parameters, return type and name of the function.
-    It is then followed by parameter list of function wrapped in `()`
-    and keyword `FNBEG` which starts the body of the function. This body is a new block and must be closed with the `END` keyword.
+    It is then followed by `FNBEG` which takes parameter list of function
+    and starts the body of the function. This body is a new block and must be closed with the `END` keyword.
 ### Function taking no parameters
 Functions taking no parameters can be defined by using `(void)` as the
 the parameter list arguments to the function definition keywords.
@@ -272,8 +287,23 @@ FN (void, foobar, (void),
 )
 
 BEGIN
+    send (0)
 END
 ```
+Or
+```C
+#include <MALang.h>
+
+// void foobar()
+FNDEF (void, foobar) FNBEG (void)
+    println ("void is fun")
+END
+
+BEGIN
+    send (0)
+END
+```
+
 ### Function invocation
 Function defined with `FN` or `FNDEF` are normal C funtions and can
 be invoked by diffrent methods
@@ -288,8 +318,8 @@ be invoked by diffrent methods
         println ("void is fun")
     )
 
-    FNDEF (int, bar) (int p1, float p2) FNBEG
-        format ("%d %f", p1, p2)
+    FNDEF (int, bar) FNBEG (int p1, float p2)
+        formatp ("%d %f", p1, p2)
         int i = 0, j = 1 end // okay
         send (0)
     END
@@ -303,7 +333,7 @@ be invoked by diffrent methods
 
     Another method of invoking any function is to use `call` and `with`.
 
-    `call` takes a function and invokes it with the `()` wrapped
+    `call` takes a function and invokes it with the
     arguments provide in `with`
     ```C
     #include <MALang.h>
@@ -312,15 +342,15 @@ be invoked by diffrent methods
         println ("void is fun")
     )
 
-    FNDEF (int, bar) (int p1, float p2) FNBEG
-        format ("%d %f", p1, p2)
+    FNDEF (int, bar) FNBEG (int p1, float p2)
+        formatp ("%d %f", p1, p2)
         int i = 0, j = 1 end
         send (0)
     END
 
     BEGIN
-        call (foobar) with (())
-        call (bar) with ((10, 10.0))
+        call (foobar) with ()
+        call (bar) with (10, 10.0)
     END
     ```
 

@@ -20,7 +20,7 @@
  * complete preceding funtion call
  * WARNING: This must be preceded by call(name)
  */
-#define with(params) params;
+#define with(params...) (params);
 
 /**
  * Call function name with params as arguments

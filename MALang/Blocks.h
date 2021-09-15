@@ -41,6 +41,8 @@
  */
 #define FOR_D(init, cond, incr) for (init; cond; incr) {
 
+
+// TODO: Implement better for
 /**
  * New advanced for loop
  */
@@ -58,14 +60,13 @@
 
 /**
  * Do part of Do-While loop
- * WARNING: Marco Pitlfall
  */
-#define DO(body) do { body }
+#define DO do {
 
 /**
  * While part of Do-While loop
  */
-#define WHL(cond) while (cond);
+#define WHL(cond) } while (cond);
 
 /**
  * Exit returning status from a function
@@ -78,9 +79,9 @@
 #define send(status) return status;
 
 /**
- * Exit returning status from a function
+ * Exit returning value from a function
  */
-#define RET(status) return status;
+#define RET(value) return value;
 
 /**
  * Define a function
@@ -92,7 +93,7 @@
  * Begin function body
  * WARNING: Must be preceded by FNDEF(type, name)
  */
-#define FNBEG {
+#define FNBEG(args...) (args) {
 
 /**
  * Define a function (short)

@@ -27,6 +27,18 @@
 #define init(value) = value;
 
 /**
+ * Define another variable in a definition chain (uninitialized)
+ * HINT: May be followed by initw(value) or init(value)
+ */
+#define also(name) , name
+
+/**
+ * Initialize the variable in a definition chain and keep the chain
+ * HINT: May be followed by also(value)
+ */
+#define initw(val) = val
+
+/**
  * Array
  * WARNING: Not implemented
  */

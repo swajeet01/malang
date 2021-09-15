@@ -1,3 +1,5 @@
+# Docs and sources are not synchronized for now
+
 # MALang- Macro Abstracted Language
 A (not really) high level programming language, based on C Pre Processor Macro
 Expainsion.
