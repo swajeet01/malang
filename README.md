@@ -27,7 +27,7 @@ There are few diffrent ways in which you can use MALang.
 4. Compile with `-I<your-directory>` (for GCC) option.
 
 # Writing First MALang program
-_You can use any Text Editor to write MALang programs, I'll use VSCode. 
+_You can use any Text Editor to write MALang programs, I'll use VSCode._
 
 ### Editor Setup
 - Open or create a new folder from VSCode.
@@ -47,13 +47,6 @@ END
 ### Compile Your Program
 
 Compile your file normally like you compile a C program.
-
-### Editor Setup (Windows)
-- Open or create a new folder from VSCode.
-- Create a file named `main.c`.
-
-_We don't need that Language Mode workaround here because it's already a
-C file_
 
 ## Documentation
 Read the [MALang Basics](docs/basics.md)
